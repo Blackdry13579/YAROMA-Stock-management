@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits - YAROMA Service</title>
+    
+    <link rel="icon" type="image/png" href="../../assets/img/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar (même que dashboard) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="sidebar-brand">
+                    <h1>YAROMA</h1>
+                    <p>Gestion de Stock</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Principal</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../dashboard.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Gestion</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="list.html" class="nav-link active">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                </svg>
+                                Produits
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../categories/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"></path>
+                                </svg>
+                                Catégories
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../inventory/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                                    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                                    <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                                </svg>
+                                Stock
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Opérations</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../sales/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                Ventes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../purchases/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                Ravitaillement
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../history.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                Historique
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contacts</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled" onclick="return false;">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                Fournisseurs
+                                <span class="nav-badge" style="background: var(--gray-400);">Bientôt</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled" onclick="return false;">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                Clients
+                                <span class="nav-badge" style="background: var(--gray-400);">Bientôt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Système</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../settings.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6m5.66-13.66-4.24 4.24m0 6.84-4.24 4.24m13.66-5.66h-6m-6 0H1m17.66 5.66-4.24-4.24m0-6.84-4.24-4.24"></path>
+                                </svg>
+                                Paramètres
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user" onclick="handleLogout()">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Chargement...</div>
+                        <div class="user-role" id="userRole">Admin</div>
+                    </div>
+                    <svg class="user-logout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenu principal -->
+        <main class="main-content" id="mainContent">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="header-toggle" onclick="toggleSidebar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="header-title">
+                        <h1>Produits</h1>
+                        <p>Gestion de tous vos produits</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <svg class="header-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="search" id="searchInput" placeholder="Rechercher un produit..." onkeyup="searchProducts()">
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Filtres et actions -->
+                <div class="card" style="margin-bottom: var(--spacing-lg);">
+                    <div class="card-body" style="padding: var(--spacing-lg);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-md);">
+                            <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                                <select id="categoryFilter" class="form-select" style="width: 200px;" onchange="filterProducts()">
+                                    <option value="">Toutes les catégories</option>
+                                </select>
+                                <select id="stockFilter" class="form-select" style="width: 200px;" onchange="filterProducts()">
+                                    <option value="">Tous les stocks</option>
+                                    <option value="in_stock">En stock</option>
+                                    <option value="low_stock">Stock faible</option>
+                                    <option value="out_of_stock">Rupture</option>
+                                </select>
+                                
+                                <!-- Bouton filtre de colonnes -->
+                                <div style="position: relative;">
+                                    <button type="button" class="btn btn-outline" onclick="toggleColumnFilter(event)" id="columnFilterBtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                                            <line x1="17" y1="16" x2="23" y2="16"></line>
+                                        </svg>
+                                        Filtres
+                                    </button>
+                                    
+                                    <!-- Menu déroulant des colonnes -->
+                                    <div id="columnFilterMenu" style="display: none; position: absolute; top: 100%; left: 0; margin-top: var(--spacing-xs); background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--spacing-md); width: 250px; z-index: 1000;">
+                                        <div style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--gray-900);">Afficher les colonnes</div>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('image')" style="margin-right: var(--spacing-sm);">
+                                            <span>Image</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('reference')" style="margin-right: var(--spacing-sm);">
+                                            <span>Référence</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('name')" style="margin-right: var(--spacing-sm);">
+                                            <span>Nom</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('category')" style="margin-right: var(--spacing-sm);">
+                                            <span>Catégorie</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('stock')" style="margin-right: var(--spacing-sm);">
+                                            <span>Stock</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('cost-price')" style="margin-right: var(--spacing-sm);">
+                                            <span>Prix d'achat</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('sale-price')" style="margin-right: var(--spacing-sm);">
+                                            <span>Prix de vente</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('status')" style="margin-right: var(--spacing-sm);">
+                                            <span>Statut</span>
+                                        </label>
+                                        <label style="display: flex; align-items: center; padding: var(--spacing-xs) 0; cursor: pointer;">
+                                            <input type="checkbox" checked onchange="toggleColumn('actions')" style="margin-right: var(--spacing-sm);">
+                                            <span>Actions</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--spacing-md);">
+                                <button class="btn btn-outline" onclick="resetFilters()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                        <path d="M21 3v5h-5"></path>
+                                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                        <path d="M3 21v-5h5"></path>
+                                    </svg>
+                                    Réinitialiser
+                                </button>
+                                <button class="btn btn-primary" onclick="window.location.href='create.html'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Nouveau produit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liste des produits -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                            Liste des produits
+                        </h2>
+                        <span id="productCount" class="badge badge-primary">0 produits</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-image">Image</th>
+                                        <th class="col-reference">Référence</th>
+                                        <th class="col-name">Nom</th>
+                                        <th class="col-category">Catégorie</th>
+                                        <th class="col-stock">Stock</th>
+                                        <th class="col-cost-price">Prix d'achat</th>
+                                        <th class="col-sale-price">Prix de vente</th>
+                                        <th class="col-status">Statut</th>
+                                        <th class="col-actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <tr>
+                                        <td colspan="9" style="text-align: center; padding: var(--spacing-xl);">
+                                            <div class="loading">
+                                                <div class="loading-spinner"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Scripts -->
+    <script src="../../js/config.js"></script>
+    <script src="../../js/services/odoo-api.js"></script>
+    <script src="../../js/services/auth.js"></script>
+    <script src="../../js/services/products.js"></script>
+    <script src="../../js/app.js"></script>
+    <script>
+        let allProducts = [];
+        let filteredProducts = [];
+
+        async function initProductsPage() {
+            try {
+                if (!window.AuthService.isAuthenticated()) {
+                    window.location.href = '../auth/login.html';
+                    return;
+                }
+
+                const user = window.AuthService.getCurrentUser();
+                if (user) {
+                    document.getElementById('userName').textContent = user.fullname;
+                    document.getElementById('userAvatar').textContent = user.fullname.charAt(0).toUpperCase();
+                }
+
+                await loadCategories();
+                await loadProducts();
+            } catch (error) {
+                console.error('Erreur initialisation:', error);
+            }
+        }
+
+        async function loadCategories() {
+            // En mode TEST, créer des catégories fictives
+            const categories = [
+                { id: 1, name: 'Rails' },
+                { id: 2, name: 'Vitres' },
+                { id: 3, name: 'Cornières' },
+                { id: 4, name: 'Accessoires' },
+            ];
+
+            const select = document.getElementById('categoryFilter');
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.id;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+        }
+
+        async function loadProducts() {
+            try {
+                // En mode TEST, créer des produits fictifs avec variantes
+                allProducts = [
+                    { 
+                        id: 1, 
+                        default_code: 'RAIL-001', 
+                        name: 'Rail +couvre', 
+                        categ_id: [1, 'Rails'], 
+                        qty_available: 45, 
+                        standard_price: 13500, 
+                        list_price: 15500, 
+                        image_128: null,
+                        unit: 'Pièce',
+                        variants: [
+                            { name: 'Argent/Champagne', price: 15500, stock: 15 },
+                            { name: 'Blanc/Noir', price: 16000, stock: 18 },
+                            { name: 'Gris/Or', price: 18000, stock: 12 }
+                        ]
+                    },
+                    { 
+                        id: 2, 
+                        default_code: 'VIT-001', 
+                        name: 'F-Glass', 
+                        categ_id: [2, 'Vitres'], 
+                        qty_available: 28, 
+                        standard_price: 4500, 
+                        list_price: 4500, 
+                        image_128: null,
+                        unit: 'm²',
+                        variants: [
+                            { name: 'Argent/Champagne', price: 4500, stock: 10 },
+                            { name: 'Blanc/Noir', price: 5000, stock: 10 },
+                            { name: 'Gris/Or', price: 6000, stock: 8 }
+                        ]
+                    },
+                    { 
+                        id: 3, 
+                        default_code: 'COR-001', 
+                        name: 'Cornière léger (40)', 
+                        categ_id: [3, 'Cornières'], 
+                        qty_available: 35, 
+                        standard_price: 15000, 
+                        list_price: 15000, 
+                        image_128: null,
+                        unit: 'Pièce',
+                        variants: [
+                            { name: 'Argent/Champagne', price: 15000, stock: 10 },
+                            { name: 'Blanc/Noir', price: 15000, stock: 15 },
+                            { name: 'Gris/Or', price: 15500, stock: 10 }
+                        ]
+                    },
+                    { 
+                        id: 4, 
+                        default_code: 'RAIL-002', 
+                        name: 'Rail sans couvre', 
+                        categ_id: [1, 'Rails'], 
+                        qty_available: 8, 
+                        standard_price: 11000, 
+                        list_price: 13500, 
+                        image_128: null,
+                        unit: 'Pièce',
+                        variants: [
+                            { name: 'Argent/Champagne', price: 13500, stock: 3 },
+                            { name: 'Blanc/Noir', price: 14000, stock: 3 },
+                            { name: 'Gris/Or', price: 15500, stock: 2 }
+                        ]
+                    },
+                    { 
+                        id: 5, 
+                        default_code: 'RAIL-003', 
+                        name: 'Ventaux', 
+                        categ_id: [1, 'Rails'], 
+                        qty_available: 0, 
+                        standard_price: 11000, 
+                        list_price: 11000, 
+                        image_128: null,
+                        unit: 'Pièce',
+                        variants: [
+                            { name: 'Argent/Champagne', price: 11000, stock: 0 },
+                            { name: 'Blanc/Noir', price: 12000, stock: 0 },
+                            { name: 'Gris/Or', price: 7000, stock: 0 }
+                        ]
+                    },
+                ];
+
+                filteredProducts = [...allProducts];
+                displayProducts();
+            } catch (error) {
+                console.error('Erreur chargement produits:', error);
+            }
+        }
+
+        function displayProducts() {
+            const tbody = document.getElementById('productsTable');
+            document.getElementById('productCount').textContent = `${filteredProducts.length} produits`;
+
+            if (filteredProducts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" style="text-align: center; padding: var(--spacing-xl); color: var(--gray-500);">
+                            Aucun produit trouvé
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filteredProducts.map(product => {
+                const stockStatus = product.qty_available > 10 ? 'success' : 
+                                   product.qty_available > 0 ? 'warning' : 'danger';
+                const stockLabel = product.qty_available > 10 ? 'En stock' : 
+                                  product.qty_available > 0 ? 'Stock faible' : 'Rupture';
+
+                // Afficher les variantes s'il y en a
+                const variantsInfo = product.variants && product.variants.length > 0 
+                    ? `<br><small style="color: var(--gray-500);">${product.variants.length} variantes disponibles</small>`
+                    : '';
+
+                // Prix min et max pour les variantes
+                let priceRange = '';
+                if (product.variants && product.variants.length > 1) {
+                    const prices = product.variants.map(v => v.price);
+                    const minPrice = Math.min(...prices);
+                    const maxPrice = Math.max(...prices);
+                    priceRange = minPrice === maxPrice 
+                        ? `${minPrice.toLocaleString()} XOF`
+                        : `${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()} XOF`;
+                } else {
+                    priceRange = `${product.list_price.toLocaleString()} XOF`;
+                }
+
+                return `
+                    <tr>
+                        <td class="col-image">
+                            <div style="width: 40px; height: 40px; background: var(--gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="col-reference"><strong>${product.default_code}</strong></td>
+                        <td class="col-name">
+                            ${product.name}${variantsInfo}
+                        </td>
+                        <td class="col-category">${product.categ_id ? product.categ_id[1] : '-'}</td>
+                        <td class="col-stock"><span class="badge badge-${stockStatus}">${product.qty_available} ${product.unit || 'unités'}</span></td>
+                        <td class="col-cost-price">${product.standard_price.toLocaleString()} XOF</td>
+                        <td class="col-sale-price"><strong>${priceRange}</strong></td>
+                        <td class="col-status"><span class="badge badge-${stockStatus}">${stockLabel}</span></td>
+                        <td class="col-actions">
+                            <div class="table-actions">
+                                <button class="btn btn-sm btn-ghost" onclick="viewProduct(${product.id})" title="Voir">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                                <button class="btn btn-sm btn-ghost" onclick="editProduct(${product.id})" title="Modifier">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteProduct(${product.id})" title="Supprimer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function searchProducts() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            filteredProducts = allProducts.filter(p => 
+                p.name.toLowerCase().includes(search) || 
+                (p.default_code && p.default_code.toLowerCase().includes(search))
+            );
+            applyFilters();
+        }
+
+        function filterProducts() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const stockFilter = document.getElementById('stockFilter').value;
+            
+            let products = [...allProducts];
+
+            if (document.getElementById('searchInput').value) {
+                const search = document.getElementById('searchInput').value.toLowerCase();
+                products = products.filter(p => 
+                    p.name.toLowerCase().includes(search) || 
+                    (p.default_code && p.default_code.toLowerCase().includes(search))
+                );
+            }
+
+            if (categoryFilter) {
+                products = products.filter(p => p.categ_id && p.categ_id[0] == categoryFilter);
+            }
+
+            if (stockFilter === 'in_stock') {
+                products = products.filter(p => p.qty_available > 10);
+            } else if (stockFilter === 'low_stock') {
+                products = products.filter(p => p.qty_available > 0 && p.qty_available <= 10);
+            } else if (stockFilter === 'out_of_stock') {
+                products = products.filter(p => p.qty_available <= 0);
+            }
+
+            filteredProducts = products;
+            displayProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('stockFilter').value = '';
+            filteredProducts = [...allProducts];
+            displayProducts();
+        }
+
+        function viewProduct(id) {
+            window.location.href = `detail.html?id=${id}`;
+        }
+
+        function editProduct(id) {
+            window.location.href = `edit.html?id=${id}`;
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+                alert('Produit supprimé (simulation)');
+                allProducts = allProducts.filter(p => p.id !== id);
+                filteredProducts = filteredProducts.filter(p => p.id !== id);
+                displayProducts();
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function handleLogout() {
+            if (confirm('Voulez-vous vraiment vous déconnecter ?')) {
+                window.AuthService.logout();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initProductsPage);
+    </script>
+</body>
+</html>

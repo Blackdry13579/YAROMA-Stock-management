@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un produit - YAROMA Service</title>
+    
+    <link rel="icon" type="image/png" href="../../assets/img/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .variant-item {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+        
+        .variant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .variant-number {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .remove-variant-btn {
+            background: var(--error);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .remove-variant-btn:hover {
+            background: #dc2626;
+        }
+        
+        .unit-radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .unit-radio-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .unit-radio-item:hover {
+            border-color: var(--primary-color);
+            background: var(--gray-50);
+        }
+        
+        .unit-radio-item input[type="radio"] {
+            margin-right: var(--spacing-sm);
+        }
+        
+        .unit-radio-item input[type="radio"]:checked + label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .dimension-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar (même structure) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="sidebar-brand">
+                    <h1>YAROMA</h1>
+                    <p>Gestion de Stock</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Principal</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../dashboard.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Gestion</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="list.html" class="nav-link active">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                </svg>
+                                Produits
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../categories/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"></path>
+                                </svg>
+                                Catégories
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../inventory/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                                    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                                    <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                                </svg>
+                                Stock
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Opérations</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../sales/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                Ventes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../purchases/list.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                Ravitaillement
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../history.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                Historique
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contacts</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled" onclick="return false;">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                </svg>
+                                Fournisseurs
+                                <span class="nav-badge" style="background: var(--gray-400);">Bientôt</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled" onclick="return false;">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                </svg>
+                                Clients
+                                <span class="nav-badge" style="background: var(--gray-400);">Bientôt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Système</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="../settings.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6"></path>
+                                </svg>
+                                Paramètres
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user" onclick="handleLogout()">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Chargement...</div>
+                        <div class="user-role" id="userRole">Admin</div>
+                    </div>
+                    <svg class="user-logout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenu principal -->
+        <main class="main-content" id="mainContent">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="header-toggle" onclick="toggleSidebar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="header-title">
+                        <h1>Créer un produit</h1>
+                        <p>Ajouter un nouveau produit avec variantes</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-outline" onclick="window.location.href='list.html'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        Retour
+                    </button>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <form id="productForm" onsubmit="handleSubmit(event)">
+                    <div class="grid grid-cols-3" style="gap: var(--spacing-xl);">
+                        <!-- Colonne gauche - Informations de base -->
+                        <div style="grid-column: span 2;">
+                            <!-- Informations générales -->
+                            <div class="card" style="margin-bottom: var(--spacing-xl);">
+                                <div class="card-header">
+                                    <h2 class="card-title">Informations générales</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="grid grid-cols-2">
+                                        <div class="form-group" style="grid-column: span 2;">
+                                            <label class="form-label form-label-required" for="productName">Nom du produit</label>
+                                            <input type="text" id="productName" class="form-input" placeholder="Ex: Rail +couvre" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label" for="productCode">Référence (auto-générée)</label>
+                                            <input type="text" id="productCode" class="form-input" placeholder="Générée automatiquement..." readonly style="background: var(--gray-100);">
+                                            <small class="form-help">La référence sera générée selon la catégorie (ex: RAIL-001)</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label form-label-required" for="productCategory">Catégorie</label>
+                                            <select id="productCategory" class="form-select" required>
+                                                <option value="">Sélectionner une catégorie</option>
+                                                <option value="rails">Rails</option>
+                                                <option value="vitres">Vitres</option>
+                                                <option value="cornieres">Cornières</option>
+                                                <option value="accessoires">Accessoires</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group" style="grid-column: span 2;">
+                                            <label class="form-label" for="productDescription">Description</label>
+                                            <textarea id="productDescription" class="form-textarea" rows="3" placeholder="Description du produit..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Unité de mesure -->
+                            <div class="card" style="margin-bottom: var(--spacing-xl);">
+                                <div class="card-header">
+                                    <h2 class="card-title">Unité de mesure</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="unit-radio-group">
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="piece" checked>
+                                            <span>🔢 Pièce/Unité</span>
+                                        </label>
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="meter">
+                                            <span>📏 Mètre (m)</span>
+                                        </label>
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="square_meter">
+                                            <span>📐 Mètre carré (m²)</span>
+                                        </label>
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="kilogram">
+                                            <span>⚖️ Kilogramme (kg)</span>
+                                        </label>
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="gram">
+                                            <span>⚖️ Gramme (g)</span>
+                                        </label>
+                                        <label class="unit-radio-item">
+                                            <input type="radio" name="unit" value="liter">
+                                            <span>🧃 Litre (L)</span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Dimensions (pour m²) -->
+                                    <div id="dimensionFields" style="margin-top: var(--spacing-lg); display: none;">
+                                        <p style="font-size: var(--font-size-sm); color: var(--gray-600); margin-bottom: var(--spacing-md);">
+                                            Pour les vitres ou surfaces
+                                        </p>
+                                        <div class="dimension-inputs">
+                                            <div class="form-group">
+                                                <label class="form-label" for="length">Longueur (m)</label>
+                                                <input type="number" id="length" class="form-input" step="0.01" placeholder="Ex: 2.5">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="width">Largeur (m)</label>
+                                                <input type="number" id="width" class="form-input" step="0.01" placeholder="Ex: 1.5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Variantes -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M12 1v6m0 6v6"></path>
+                                        </svg>
+                                        Variantes (Couleurs/Finitions)
+                                    </h2>
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="addVariant()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        Ajouter une variante
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div id="variantsContainer">
+                                        <p style="text-align: center; color: var(--gray-500); padding: var(--spacing-xl);">
+                                            Cliquez sur "Ajouter une variante" pour créer des variations de couleur ou de finition
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Colonne droite - Prix et actions -->
+                        <div>
+                            <!-- Prix -->
+                            <div class="card" style="margin-bottom: var(--spacing-xl);">
+                                <div class="card-header">
+                                    <h2 class="card-title">Prix</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label form-label-required" for="costPrice">Prix d'achat (XOF)</label>
+                                        <input type="number" id="costPrice" class="form-input" placeholder="0" required min="0">
+                                        <small class="form-help">Prix d'achat du produit</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label form-label-required" for="salePrice">Prix de vente de base (XOF)</label>
+                                        <input type="number" id="salePrice" class="form-input" placeholder="0" required min="0">
+                                        <small class="form-help">Prix de base (variante la moins chère)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stock initial -->
+                            <div class="card" style="margin-bottom: var(--spacing-xl);">
+                                <div class="card-header">
+                                    <h2 class="card-title">Stock initial</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label" for="initialStock">Quantité</label>
+                                        <input type="number" id="initialStock" class="form-input" placeholder="0" min="0" value="0">
+                                        <small class="form-help">Stock de départ (optionnel)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-md);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        Créer le produit
+                                    </button>
+                                    <button type="button" class="btn btn-outline" style="width: 100%;" onclick="window.location.href='list.html'">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Scripts -->
+    <script src="../../js/config.js"></script>
+    <script src="../../js/services/odoo-api.js"></script>
+    <script src="../../js/services/auth.js"></script>
+    <script src="../../js/services/products.js"></script>
+    <script src="../../js/app.js"></script>
+    <script>
+        let variantCounter = 0;
+
+        // Afficher/masquer les champs de dimensions
+        document.querySelectorAll('input[name="unit"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const dimensionFields = document.getElementById('dimensionFields');
+                dimensionFields.style.display = this.value === 'square_meter' ? 'block' : 'none';
+            });
+        });
+
+        // Ajouter une variante
+        function addVariant() {
+            variantCounter++;
+            const container = document.getElementById('variantsContainer');
+            
+            if (container.querySelector('p')) {
+                container.innerHTML = '';
+            }
+
+            const variantHTML = `
+                <div class="variant-item" id="variant-${variantCounter}">
+                    <div class="variant-header">
+                        <span class="variant-number">Variante ${variantCounter}</span>
+                        <button type="button" class="remove-variant-btn" onclick="removeVariant(${variantCounter})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            Supprimer
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label form-label-required">Nom de la variante</label>
+                            <input type="text" class="form-input" name="variant_name_${variantCounter}" placeholder="Ex: Argent/Champagne" required>
+                            <small class="form-help">Couleur, finition, type...</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label form-label-required">Supplément de prix (XOF)</label>
+                            <input type="number" class="form-input" name="variant_price_${variantCounter}" placeholder="0" min="0" value="0" required>
+                            <small class="form-help">+0 pour la variante de base</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stock initial</label>
+                            <input type="number" class="form-input" name="variant_stock_${variantCounter}" placeholder="0" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', variantHTML);
+        }
+
+        // Supprimer une variante
+        function removeVariant(id) {
+            const variant = document.getElementById(`variant-${id}`);
+            if (variant) {
+                variant.remove();
+            }
+
+            const container = document.getElementById('variantsContainer');
+            if (container.children.length === 0) {
+                container.innerHTML = `
+                    <p style="text-align: center; color: var(--gray-500); padding: var(--spacing-xl);">
+                        Cliquez sur "Ajouter une variante" pour créer des variations de couleur ou de finition
+                    </p>
+                `;
+            }
+        }
+
+        // Soumettre le formulaire
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const productData = {
+                name: document.getElementById('productName').value,
+                code: document.getElementById('productCode').value,
+                category: document.getElementById('productCategory').value,
+                description: document.getElementById('productDescription').value,
+                unit: document.querySelector('input[name="unit"]:checked').value,
+                costPrice: parseFloat(document.getElementById('costPrice').value),
+                salePrice: parseFloat(document.getElementById('salePrice').value),
+                initialStock: parseInt(document.getElementById('initialStock').value) || 0,
+                variants: []
+            };
+
+            // Dimensions si m²
+            if (productData.unit === 'square_meter') {
+                productData.length = parseFloat(document.getElementById('length').value) || 0;
+                productData.width = parseFloat(document.getElementById('width').value) || 0;
+            }
+
+            // Récupérer les variantes
+            const variantElements = document.querySelectorAll('.variant-item');
+            variantElements.forEach((element, index) => {
+                const variantId = element.id.split('-')[1];
+                const variant = {
+                    name: document.querySelector(`input[name="variant_name_${variantId}"]`).value,
+                    priceExtra: parseFloat(document.querySelector(`input[name="variant_price_${variantId}"]`).value) || 0,
+                    stock: parseInt(document.querySelector(`input[name="variant_stock_${variantId}"]`).value) || 0
+                };
+                productData.variants.push(variant);
+            });
+
+            console.log('Données du produit:', productData);
+            alert('✅ Produit créé avec succès !\n\n' + JSON.stringify(productData, null, 2));
+            
+            // Redirection vers la liste
+            // window.location.href = 'list.html';
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function handleLogout() {
+            if (confirm('Voulez-vous vraiment vous déconnecter ?')) {
+                window.AuthService.logout();
+            }
+        }
+
+        // Initialisation
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!window.AuthService.isAuthenticated()) {
+                window.location.href = '../auth/login.html';
+                return;
+            }
+
+            const user = window.AuthService.getCurrentUser();
+            if (user) {
+                document.getElementById('userName').textContent = user.fullname;
+                document.getElementById('userAvatar').textContent = user.fullname.charAt(0).toUpperCase();
+            }
+        });
+    </script>
+</body>
+</html>

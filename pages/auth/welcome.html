@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YAROMA Service - Système de Gestion de Stock">
+    <title>Bienvenue - YAROMA Service</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../assets/img/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/auth.css">
+    
+    <!-- Google Fonts (optionnel) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Conteneur principal -->
+    <div class="auth-container">
+        <!-- Décorations (sphères flottantes) -->
+        <div class="auth-decorations">
+            <div class="sphere sphere-1"></div>
+            <div class="sphere sphere-2"></div>
+            <div class="sphere sphere-3"></div>
+        </div>
+
+        <!-- Carte d'authentification -->
+        <div class="auth-card fade-in">
+            <!-- En-tête -->
+            <div class="auth-header">
+                <!-- Logo -->
+                <div class="auth-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+
+                <!-- Titre -->
+                <h1 class="auth-title">Bienvenue !</h1>
+                <p class="auth-subtitle">SYSTÈME DE GESTION DE STOCK</p>
+                <p class="auth-company">YAROMA Service</p>
+            </div>
+
+            <!-- Section Welcome -->
+            <div class="auth-welcome">
+                <!-- Illustration -->
+                <div class="auth-welcome-illustration">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                </div>
+
+                <p style="color: var(--gray-600); font-size: var(--font-size-base); margin-bottom: var(--spacing-lg);">
+                    Entrez vos informations personnelles pour accéder à votre compte employé
+                </p>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="auth-buttons">
+                <button class="auth-btn auth-btn-primary" onclick="window.location.href='login.html'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Se connecter
+                </button>
+
+                <button class="auth-btn auth-btn-secondary" onclick="window.location.href='signup.html'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                    Créer un compte
+                </button>
+            </div>
+
+            <!-- Pied de page -->
+            <div class="auth-footer">
+                <p>&copy; 2024 YAROMA Service. Tous droits réservés.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+     <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="../../js/app.js"> </script>
+</body>
+</html>
