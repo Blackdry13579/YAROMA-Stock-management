@@ -6,5 +6,12 @@
 </head>
 <body>
     <p>Redirection vers le système de gestion... <a href="pages/dashboard.html">Cliquez ici</a></p>
+    <!-- Charger la config Odoo en premier -->
+<script src="js/config.js"></script>
+<!-- Puis le service API -->
+<script src="js/services/odoo-api.js"></script>
+<!-- Puis votre app -->
+<script src="js/app.js"></script>
 </body>
 </html>
+

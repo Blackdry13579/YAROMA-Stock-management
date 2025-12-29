@@ -1,38 +1,34 @@
 /* ============================================
-   YAROMA SERVICE - CONFIGURATION
-   Fichier: config.js
-   Description: Configuration de l'application (Odoo, API, etc.)
+   YAROMA SERVICE - CONFIGURATION EXEMPLE
+   Fichier: config.example.js
+   Description: Exemple de configuration (à copier en config.js)
+   ⚠️ NE PAS MODIFIER CE FICHIER
+   ⚠️ Copiez-le en config.js et remplissez vos infos
    ============================================ */
 
 const APP_CONFIG = {
     // Configuration Odoo
     ODOO: {
-        URL: 'http://16.170.231.94:8069',
-        DATABASE: 'Odoo_db',  // ⚠️ CHANGÉ - c'était 'odoo_server'
-        USERNAME: 'api@yarowa.com',  // ⚠️ CHANGÉ - utilisateur API
-        PASSWORD: 'api123',  // ⚠️ Mettez le mot de passe de l'utilisateur API
-        // OU si vous utilisez votre compte admin:
-        // USERNAME: 'nombreange3@gmail.com',
-        // PASSWORD: 'Odoo_password_226',
-        API_KEY: null, // Optionnel pour API REST
+        URL: 'http://VOTRE_IP:8069',
+        DATABASE: 'NOM_DE_VOTRE_BASE',
+        USERNAME: 'VOTRE_USERNAME',
+        PASSWORD: 'VOTRE_MOT_DE_PASSE',
+        API_KEY: null,
     },
 
-    // Mode de fonctionnement
-    MODE: 'ODOO', // ⚠️ CHANGÉ de 'TEST' à 'ODOO'
+    MODE: 'ODOO',
 
-    // Configuration de l'application
     APP: {
         NAME: 'YAROMA Service',
         VERSION: '1.0.0',
         DESCRIPTION: 'Système de Gestion de Stock',
         LOCALE: 'fr-FR',
-        CURRENCY: 'XOF', // Franc CFA
+        CURRENCY: 'XOF',
         TIMEZONE: 'Africa/Ouagadougou'
     },
 
-    // Configuration de session
     SESSION: {
-        DURATION: 30 * 24 * 60 * 60 * 1000, // 30 jours
+        DURATION: 30 * 24 * 60 * 60 * 1000,
         STORAGE_KEYS: {
             USER: 'yaroma_user',
             TOKEN: 'yaroma_token',
@@ -43,13 +39,11 @@ const APP_CONFIG = {
         }
     },
 
-    // Configuration pagination
     PAGINATION: {
         DEFAULT_LIMIT: 20,
         MAX_LIMIT: 100
     },
 
-    // Statuts
     STATUS: {
         PRODUCT: {
             ACTIVE: 'Actif',
@@ -69,14 +63,12 @@ const APP_CONFIG = {
         }
     },
 
-    // Seuils d'alerte
     ALERTS: {
         LOW_STOCK_THRESHOLD: 10,
         CRITICAL_STOCK_THRESHOLD: 5
     }
 };
 
-// ⚠️ AJOUTÉ - Pour compatibilité avec odoo-api.js
 const ODOO_CONFIG = {
     url: APP_CONFIG.ODOO.URL,
     db: APP_CONFIG.ODOO.DATABASE,
@@ -84,11 +76,5 @@ const ODOO_CONFIG = {
     password: APP_CONFIG.ODOO.PASSWORD
 };
 
-// Rendre la config disponible globalement
 window.APP_CONFIG = APP_CONFIG;
-window.ODOO_CONFIG = ODOO_CONFIG;  // ⚠️ AJOUTÉ
-
-console.log('✅ Configuration chargée');
-console.log('🔗 Mode:', APP_CONFIG.MODE);
-console.log('🌐 Odoo URL:', APP_CONFIG.ODOO.URL);
-console.log('📦 Base de données:', APP_CONFIG.ODOO.DATABASE);
+window.ODOO_CONFIG = ODOO_CONFIG;

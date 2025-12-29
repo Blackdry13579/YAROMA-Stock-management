@@ -3,7 +3,39 @@
    Fichier: app.js
    Description: Point d'entrée principal de l'application Vue.js
    ============================================ */
+/**
+ * Application principale YAROMA Stock Management
+ */
 
+// Test de connexion Odoo au démarrage
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🚀 Démarrage YAROMA Stock Management');
+    
+    // Tester la connexion Odoo
+    if (typeof odooApi !== 'undefined') {
+        try {
+            const isConnected = await odooApi.authenticate();
+            
+            if (isConnected) {
+                console.log('✅ Connexion Odoo réussie');
+                
+                // Charger les stats
+                const stats = await odooApi.getStats();
+                console.log('📊 Statistiques:', stats);
+                
+                // Vous pouvez maintenant utiliser odooApi partout dans votre app
+            } else {
+                console.error('❌ Échec connexion Odoo');
+            }
+        } catch (error) {
+            console.error('❌ Erreur:', error);
+        }
+    } else {
+        console.error('❌ odooApi non disponible');
+    }
+    
+    // Le reste de votre code app.js...
+});
 // Configuration globale de Vue.js
 const { createApp } = Vue;
 
