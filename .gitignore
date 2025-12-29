@@ -1,0 +1,13 @@
+Configuration sensible
+js/config.js
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Editeurs
+.vscode/
+.idea/
+
+# Logs
+*.log
